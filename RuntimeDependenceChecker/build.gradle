@@ -1,0 +1,32 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
+
+publish {
+    userOrg = 'yangtianrui'
+    groupId = 'com.yangtianrui.tools.rdc'
+    artifactId = 'RuntimeDependenceChecker'
+    publishVersion = '1.0.0'
+    desc = 'RuntimeDependenceChecker'
+    website = 'https://github.com/yangtianrui95/RuntimeDependenceChecker'
+}
